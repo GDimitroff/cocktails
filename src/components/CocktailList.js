@@ -4,13 +4,13 @@ import Cocktail from './Cocktail';
 import Loading from './Loading';
 
 const CocktailList = () => {
-  const { cocktails, loading } = useCocktails();
+  const { loading, filteredCocktails } = useCocktails();
 
   if (loading) {
     return <Loading />;
   }
 
-  if (cocktails.length === 0) {
+  if (filteredCocktails.length === 0) {
     return (
       <h2 className="section-title">
         no cocktails matched your search criteria
@@ -20,7 +20,7 @@ const CocktailList = () => {
 
   return (
     <section className="section cocktails">
-      {cocktails.map((cocktail) => {
+      {filteredCocktails.map((cocktail) => {
         return <Cocktail key={cocktail.id} {...cocktail} />;
       })}
     </section>

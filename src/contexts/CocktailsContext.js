@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { data } from '../data';
 
+import { data } from '../data';
 import { transformData } from '../utils/helpers';
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
@@ -10,7 +10,9 @@ const CocktailsContext = React.createContext(null);
 export const CocktailsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('a');
+  const [filter, setFilter] = useState('all');
   const [cocktails, setCocktails] = useState([]);
+  const [filteredCocktails, setFilteredCocktails] = useState([]);
 
   useEffect(() => {
     const fetchDrinks = async () => {
@@ -38,8 +40,25 @@ export const CocktailsProvider = ({ children }) => {
     fetchDrinks();
   }, [searchTerm]);
 
+  useEffect(() => {
+    if (cocktails.length === 0) return;
+
+    setFilteredCocktails(
+      cocktails.filter((cocktail) => {
+        return cocktail.category.toLowerCase() === filter || filter === 'all';
+      })
+    );
+  }, [filter, cocktails]);
+
   return (
-    <CocktailsContext.Provider value={{ loading, cocktails, setSearchTerm }}>
+    <CocktailsContext.Provider
+      value={{
+        loading,
+        cocktails,
+        filteredCocktails,
+        setSearchTerm,
+        setFilter,
+      }}>
       {children}
     </CocktailsContext.Provider>
   );

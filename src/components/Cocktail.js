@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const Cocktail = (props) => {
-  const { id, name, image, category, glass, instructions, isAlcoholic } = props;
+  const { id, name, image, glass, isAlcoholic } = props;
 
   return (
     <article className="cocktail">
