@@ -31,6 +31,16 @@ body {
   line-height: 1.4;
   color: var(--primary-white);
   background: var(--primary-dark-color);
+
+  /* Hide scrollbar but still be able to scroll */
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 a {
@@ -122,7 +132,41 @@ a {
 }
 
 .search {
-  width: 50%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-form {
+  flex: 1;
+}
+
+.form-processing {
+  display: flex;
+  place-items: center;
+}
+
+.form-processing svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--primary-white);
+  opacity: 0;
+  user-select: none;
+}
+
+.form-processing.active svg {
+  opacity: 1;
+  animation: 0.7s spin linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .form-control input[type='text'] {
@@ -134,18 +178,6 @@ a {
 
 .filter select {
   padding: 8px 16px;
-}
-
-/* About */
-
-.section-about {
-  padding: 2rem 3rem;
-}
-
-.section-about p {
-  line-height: 2rem;
-  font-weight: 400;
-  letter-spacing: 2px;
 }
 
 /* Cocktails */
@@ -202,6 +234,11 @@ a {
   font-size: 1.4rem;
   color: var(--primary-grey);
   margin-bottom: 1rem;
+}
+
+/* Cocktail Details */
+.cocktail-details {
+  padding: 2rem 3rem;
 }
 
 /* Error */

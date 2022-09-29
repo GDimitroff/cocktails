@@ -1,10 +1,21 @@
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const Cocktail = (props) => {
   const { id, name, image, glass, isAlcoholic } = props;
 
   return (
-    <article className="cocktail">
+    <motion.article
+      layout
+      initial={{ scale: 0 }}
+      animate={{
+        scale: 1,
+        transition: {
+          delay: 0.3,
+          type: 'Tween',
+        },
+      }}
+      className="cocktail">
       <div className="cocktail--image">
         <img src={image} alt={name} />
       </div>
@@ -16,7 +27,7 @@ const Cocktail = (props) => {
           details
         </Link>
       </div>
-    </article>
+    </motion.article>
   );
 };
 

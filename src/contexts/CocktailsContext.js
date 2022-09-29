@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { data } from '../data';
 import { transformData } from '../utils/helpers';
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-
 const CocktailsContext = React.createContext(null);
 
 export const CocktailsProvider = ({ children }) => {
@@ -19,17 +17,17 @@ export const CocktailsProvider = ({ children }) => {
       setLoading(true);
 
       try {
-        // const response = await fetch(`${url}${searchTerm}`);
-        // const data = await response.json();
-        // const { drinks } = data;
+        const response = await fetch(`${url}${searchTerm}`);
+        const data = await response.json();
+        const { drinks } = data;
 
-        // if (drinks) {
-        //   const newCocktails = transformData(drinks);
-        //   setCocktails(newCocktails);
-        // } else {
-        //   setCocktails([]);
-        // }
-        setCocktails(data);
+        if (drinks) {
+          const newCocktails = transformData(drinks);
+          setCocktails(newCocktails);
+        } else {
+          setCocktails([]);
+        }
+
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -41,8 +39,6 @@ export const CocktailsProvider = ({ children }) => {
   }, [searchTerm]);
 
   useEffect(() => {
-    if (cocktails.length === 0) return;
-
     setFilteredCocktails(
       cocktails.filter((cocktail) => {
         return cocktail.category.toLowerCase() === filter || filter === 'all';

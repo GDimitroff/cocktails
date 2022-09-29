@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 import { useCocktails } from '../contexts/CocktailsContext';
 
 import Cocktail from './Cocktail';
@@ -19,11 +21,11 @@ const CocktailList = () => {
   }
 
   return (
-    <section className="section cocktails">
+    <motion.section className="section cocktails">
       {filteredCocktails.map((cocktail) => {
         return <Cocktail key={cocktail.id} {...cocktail} />;
       })}
-    </section>
+    </motion.section>
   );
 };
 
