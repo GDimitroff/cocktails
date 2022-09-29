@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 
 const Cocktail = (props) => {
   const { id, name, image, category, glass, instructions, isAlcoholic } = props;
-  console.log(category);
 
   return (
     <article className="cocktail">

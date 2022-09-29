@@ -1,10 +1,10 @@
-import SearchForm from '../components/SearchForm';
+import Settings from '../components/Settings';
 import CocktailList from '../components/CocktailList';
 
 const Home = () => {
   return (
     <main>
-      <SearchForm />
+      <Settings />
       <CocktailList />
     </main>
   );

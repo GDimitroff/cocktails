@@ -112,6 +112,30 @@ a {
   color: var(--primary-light-color);
 }
 
+/* Settings */
+
+.settings {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  margin-top: 3rem;
+}
+
+.search {
+  width: 50%;
+}
+
+.form-control input[type='text'] {
+  font-family: inherit;
+  width: 100%;
+  padding: 8px 16px;
+  outline-color: var(--primary-light-color);
+}
+
+.filter select {
+  padding: 8px 16px;
+}
+
 /* About */
 
 .section-about {
