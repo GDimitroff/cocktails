@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import CocktailsProvider from './contexts/CocktailsContext';
+import { CocktailsProvider } from './contexts/CocktailsContext';
 
 import App from './App';
 import './index.css';

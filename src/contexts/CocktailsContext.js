@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
-const CocktailsContext = React.createContext();
+const CocktailsContext = React.createContext(null);
 
-const CocktailsProvider = ({ children }) => {
+export const CocktailsProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('a');
+  const [cocktails, setCocktails] = useState([]);
+
   return (
-    <CocktailsContext.Provider value="hello">
+    <CocktailsContext.Provider value={{ loading, cocktails, setSearchTerm }}>
       {children}
     </CocktailsContext.Provider>
   );
@@ -15,5 +19,3 @@ const CocktailsProvider = ({ children }) => {
 export const useCocktails = () => {
   return useContext(CocktailsContext);
 };
-
-export default CocktailsProvider;
