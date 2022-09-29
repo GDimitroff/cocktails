@@ -5,8 +5,7 @@ import Loading from './Loading';
 
 const CocktailList = () => {
   const { cocktails, loading } = useCocktails();
-  console.log(cocktails);
-  
+
   if (loading) {
     return <Loading />;
   }
@@ -19,7 +18,16 @@ const CocktailList = () => {
     );
   }
 
-  return <div>CocktailList</div>;
+  return (
+    <section className="section cocktails">
+      <h2 className="section-title">cocktails</h2>
+      <div className="cocktails-grid">
+        {cocktails.map((cocktail) => {
+          return <Cocktail key={cocktail.id} {...cocktail} />;
+        })}
+      </div>
+    </section>
+  );
 };
 
 export default CocktailList;

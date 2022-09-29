@@ -12,7 +12,7 @@ const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="cocktail/:id" element={<CocktailDetails />} />
+        <Route path="cocktails/:id" element={<CocktailDetails />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
