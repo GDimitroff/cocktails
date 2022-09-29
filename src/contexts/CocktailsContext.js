@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { data } from '../data';
 
 import { transformData } from '../utils/helpers';
 
@@ -16,17 +17,17 @@ export const CocktailsProvider = ({ children }) => {
       setLoading(true);
 
       try {
-        const response = await fetch(`${url}${searchTerm}`);
-        const data = await response.json();
-        const { drinks } = data;
+        // const response = await fetch(`${url}${searchTerm}`);
+        // const data = await response.json();
+        // const { drinks } = data;
 
-        if (drinks) {
-          const newCocktails = transformData(drinks);
-          setCocktails(newCocktails);
-        } else {
-          setCocktails([]);
-        }
-
+        // if (drinks) {
+        //   const newCocktails = transformData(drinks);
+        //   setCocktails(newCocktails);
+        // } else {
+        //   setCocktails([]);
+        // }
+        setCocktails(data);
         setLoading(false);
       } catch (error) {
         console.log(error);

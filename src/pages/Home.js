@@ -3,7 +3,7 @@ import CocktailList from '../components/CocktailList';
 
 const Home = () => {
   return (
-    <main className="main section">
+    <main>
       <SearchForm />
       <CocktailList />
     </main>

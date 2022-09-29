@@ -20,12 +20,9 @@ const CocktailList = () => {
 
   return (
     <section className="section cocktails">
-      <h2 className="section-title">cocktails</h2>
-      <div className="cocktails-grid">
-        {cocktails.map((cocktail) => {
-          return <Cocktail key={cocktail.id} {...cocktail} />;
-        })}
-      </div>
+      {cocktails.map((cocktail) => {
+        return <Cocktail key={cocktail.id} {...cocktail} />;
+      })}
     </section>
   );
 };
