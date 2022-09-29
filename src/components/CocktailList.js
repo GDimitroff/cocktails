@@ -5,7 +5,8 @@ import Loading from './Loading';
 
 const CocktailList = () => {
   const { cocktails, loading } = useCocktails();
-
+  console.log(cocktails);
+  
   if (loading) {
     return <Loading />;
   }
