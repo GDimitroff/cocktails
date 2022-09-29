@@ -1,5 +1,13 @@
+import SearchForm from '../components/SearchForm';
+import CocktailList from '../components/CocktailList';
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <main>
+      <SearchForm />
+      <CocktailList />
+    </main>
+  );
 };
 
 export default Home;

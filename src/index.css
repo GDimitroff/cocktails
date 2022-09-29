@@ -15,6 +15,7 @@
   --light-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.3);
   --dark-shadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
   --border-radius: 0.25rem;
+  --small-width: 980px;
   --full-width: 1280px;
 }
 
@@ -30,11 +31,11 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.4;
   color: var(--primary-white);
   background: var(--background-color);
-  line-height: 1.4;
-  font-size: 1.6rem;
-  font-weight: 300;
 }
 
 h1,
@@ -56,9 +57,8 @@ img {
   display: block;
 }
 
-.container {
+.section {
   max-width: var(--full-width);
-  padding: 2rem 3rem;
   margin: 0 auto;
 }
 
@@ -136,6 +136,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding: 2rem 3rem;
 }
 
 .logo {
@@ -162,7 +163,6 @@ img {
 }
 
 .nav-links a {
-  text-transform: capitalize;
   font-weight: bold;
   font-weight: 400;
   letter-spacing: 2px;
@@ -177,13 +177,11 @@ img {
 
 /* About */
 
-.about-section {
-  width: var(--small-width);
-  max-width: var(--max-width);
-  margin: 0 auto;
+.section-about {
+  padding: 2rem 3rem;
 }
 
-.about-section p {
+.section-about p {
   line-height: 2rem;
   font-weight: 400;
   letter-spacing: 2px;
