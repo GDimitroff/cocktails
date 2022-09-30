@@ -68,6 +68,10 @@ const CocktailDetails = () => {
     ingredients,
   } = cocktail;
 
+  const formattedIngredients = ingredients
+    .filter((item) => item !== null)
+    .join(', ');
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -79,13 +83,12 @@ const CocktailDetails = () => {
         },
       }}
       className="section cocktail-details">
-      <Link to="/" className="btn">
-        back home
-      </Link>
-      <h2 className="section-title">{name}</h2>
       <div className="drink">
-        <img src={image} alt={name} />
+        <div className="cocktail-details--image">
+          <img src={image} alt={name} />
+        </div>
         <div className="drink-info">
+          <h2 className="drink-title">{name}</h2>
           <p>
             <span className="drink-data">name: </span>
             {name}
@@ -108,12 +111,13 @@ const CocktailDetails = () => {
           </p>
           <p>
             <span className="drink-data">ingredients: </span>
-            {ingredients.map((item, index) => {
-              return item ? <span key={index}>item</span> : null;
-            })}
+            {formattedIngredients}
           </p>
         </div>
       </div>
+      <Link to="/" className="btn btn-home-details">
+        back home
+      </Link>
     </motion.section>
   );
 };
