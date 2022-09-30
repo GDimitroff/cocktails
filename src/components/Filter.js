@@ -1,7 +1,7 @@
 import { useCocktails } from '../contexts/CocktailsContext';
 
 const Filter = () => {
-  const { cocktails, setFilter } = useCocktails();
+  const { cocktails, filter, setFilter } = useCocktails();
   const categories = [
     'all',
     ...new Set(cocktails.map((cocktail) => cocktail.category.toLowerCase())),
@@ -11,9 +11,17 @@ const Filter = () => {
     setFilter(e.target.value);
   };
 
+  if (cocktails.length === 0) {
+    return null;
+  }
+
   return (
     <div className="filter">
-      <select name="categories" id="categories" onChange={handleChange}>
+      <select
+        name="categories"
+        id="categories"
+        onChange={handleChange}
+        value={filter}>
         {categories.map((category) => {
           return (
             <option value={category} key={category}>

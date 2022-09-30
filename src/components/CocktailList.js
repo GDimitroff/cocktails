@@ -26,7 +26,8 @@ const CocktailList = () => {
         </motion.h2>
       )}
       <motion.div className="cocktails">
-        {filteredCocktails.length > 0 &&
+        {!loading &&
+          filteredCocktails.length > 0 &&
           filteredCocktails.map((cocktail) => {
             return <Cocktail key={cocktail.id} {...cocktail} />;
           })}

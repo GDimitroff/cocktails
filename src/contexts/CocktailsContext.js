@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 
 import { transformData } from '../utils/helpers';
 
@@ -12,32 +12,38 @@ export const CocktailsProvider = ({ children }) => {
   const [cocktails, setCocktails] = useState([]);
   const [filteredCocktails, setFilteredCocktails] = useState([]);
 
-  useEffect(() => {
-    const fetchDrinks = async () => {
-      setLoading(true);
+  const fetchDrinks = useCallback(async () => {
+    setLoading(true);
 
-      try {
-        const response = await fetch(`${url}${searchTerm}`);
-        const data = await response.json();
-        const { drinks } = data;
+    try {
+      const response = await fetch(`${url}${searchTerm}`);
+      const data = await response.json();
+      const { drinks } = data;
 
-        if (drinks) {
-          const newCocktails = transformData(drinks);
-          setCocktails(newCocktails);
-        } else {
-          setCocktails([]);
-        }
-
-        setFilter('all');
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
+      if (drinks) {
+        const newCocktails = transformData(drinks);
+        setCocktails(newCocktails);
+      } else {
+        setCocktails([]);
       }
-    };
 
-    fetchDrinks();
+      setFilter('all');
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   }, [searchTerm]);
+
+  useEffect(() => {
+    const fetchTimeout = setTimeout(() => {
+      fetchDrinks();
+    }, 400);
+
+    return () => {
+      clearTimeout(fetchTimeout);
+    };
+  }, [searchTerm, fetchDrinks]);
 
   useEffect(() => {
     setFilteredCocktails(
@@ -53,7 +59,9 @@ export const CocktailsProvider = ({ children }) => {
         loading,
         cocktails,
         filteredCocktails,
+        searchTerm,
         setSearchTerm,
+        filter,
         setFilter,
       }}>
       {children}

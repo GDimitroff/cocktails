@@ -1,24 +1,7 @@
-import { useState, useEffect } from 'react';
-
 import { useCocktails } from '../contexts/CocktailsContext';
 
-let initialLoad = true;
-
 const SearchForm = () => {
-  const { setSearchTerm } = useCocktails();
-  const [searchValue, setSearchValue] = useState('');
-
-  useEffect(() => {
-    if (initialLoad) return;
-
-    let searchTimeout = setTimeout(() => {
-      setSearchTerm(searchValue);
-    }, 500);
-
-    return () => {
-      clearTimeout(searchTimeout);
-    };
-  }, [searchValue, setSearchTerm]);
+  const { searchTerm, setSearchTerm } = useCocktails();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,10 +15,9 @@ const SearchForm = () => {
             <input
               type="text"
               id="name"
-              value={searchValue}
+              value={searchTerm}
               onChange={(e) => {
-                initialLoad = false;
-                setSearchValue(e.target.value);
+                setSearchTerm(e.target.value);
               }}
               placeholder="search..."
             />

@@ -210,7 +210,7 @@ a {
 
 /* Cocktail Details */
 .cocktail-details {
-  padding: 2rem 3rem;
+  background-color:darkgrey;
 }
 
 /* Error */
@@ -237,13 +237,13 @@ a {
 }
 
 .loader {
-  position: relative;
-  font-size: 3rem;
-  color: var(--primary-white);
-  margin: 0 auto;
-  margin-top: 30vh;
-  text-indent: -9999em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: var(--primary-white);
+  text-indent: -9999em;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
