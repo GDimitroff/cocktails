@@ -132,7 +132,7 @@ a {
 }
 
 .search {
-  width: 30%;
+  flex-basis: 40%;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -140,33 +140,6 @@ a {
 
 .search-form {
   flex: 1;
-}
-
-.form-processing {
-  display: flex;
-  place-items: center;
-}
-
-.form-processing svg {
-  width: 24px;
-  height: 24px;
-  fill: var(--primary-white);
-  opacity: 0;
-  user-select: none;
-}
-
-.form-processing.active svg {
-  opacity: 1;
-  animation: 0.7s spin linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .form-control input[type='text'] {
@@ -265,12 +238,13 @@ a {
 }
 
 .loader {
-  color: var(--primary-white);
-  text-indent: -9999em;
-  margin: 88px auto;
-  margin-top: 20rem;
   position: relative;
   font-size: 3rem;
+  color: var(--primary-white);
+  margin: 0 auto;
+  margin-top: 30vh;
+  text-indent: -9999em;
+  transform: translate(-50%, -50%);
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
