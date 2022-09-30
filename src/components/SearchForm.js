@@ -2,21 +2,22 @@ import { useState, useEffect } from 'react';
 
 import { useCocktails } from '../contexts/CocktailsContext';
 
+let initialLoad = true;
+
 const SearchForm = () => {
   const { setSearchTerm } = useCocktails();
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
-    if (searchValue) {
-      let searchTimeout = setTimeout(() => {
-        console.log('inside timeout');
-        setSearchTerm(searchValue);
-      }, 500);
+    if (initialLoad) return;
 
-      return () => {
-        clearTimeout(searchTimeout);
-      };
-    }
+    let searchTimeout = setTimeout(() => {
+      setSearchTerm(searchValue);
+    }, 500);
+
+    return () => {
+      clearTimeout(searchTimeout);
+    };
   }, [searchValue, setSearchTerm]);
 
   const handleSubmit = (e) => {
@@ -32,7 +33,10 @@ const SearchForm = () => {
               type="text"
               id="name"
               value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
+              onChange={(e) => {
+                initialLoad = false;
+                setSearchValue(e.target.value);
+              }}
               placeholder="search..."
             />
           </label>

@@ -7,7 +7,7 @@ const CocktailsContext = React.createContext(null);
 
 export const CocktailsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('a');
+  const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all');
   const [cocktails, setCocktails] = useState([]);
   const [filteredCocktails, setFilteredCocktails] = useState([]);
