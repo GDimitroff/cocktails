@@ -11,10 +11,19 @@ const CocktailList = () => {
   return (
     <motion.section className="section">
       {loading && <Loading />}
-      {filteredCocktails.length === 0 && (
-        <h2 className="section-title">
+      {!loading && filteredCocktails.length === 0 && (
+        <motion.h2
+          className="section-title"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: {
+              delay: 0.3,
+              type: 'Tween',
+            },
+          }}>
           no cocktails matched your search criteria
-        </h2>
+        </motion.h2>
       )}
       <motion.div className="cocktails">
         {filteredCocktails.length > 0 &&

@@ -23,7 +23,7 @@ const Cocktail = (props) => {
         <h3>{name}</h3>
         <h4>{glass}</h4>
         <p>{isAlcoholic}</p>
-        <Link to={`/cocktails/${id}`} className="btn btn-primary">
+        <Link to={`/cocktails/${id}`} className="btn">
           details
         </Link>
       </div>

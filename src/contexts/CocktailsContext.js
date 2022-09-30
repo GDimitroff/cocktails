@@ -28,6 +28,7 @@ export const CocktailsProvider = ({ children }) => {
           setCocktails([]);
         }
 
+        setFilter('all');
         setLoading(false);
       } catch (error) {
         console.log(error);
