@@ -238,6 +238,7 @@ a {
 .cocktail-details--image img {
   display: block;
   width: 100%;
+  object-fit: cover;
 }
 
 .drink-info {

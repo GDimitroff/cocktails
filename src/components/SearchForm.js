@@ -16,9 +16,7 @@ const SearchForm = () => {
               type="text"
               id="name"
               value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-              }}
+              onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="search..."
             />
           </label>
